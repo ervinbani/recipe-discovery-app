@@ -11,14 +11,16 @@ function App() {
   return (
     <>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/category/:categoryName" element={<Category />} />
-        <Route path="/recipe/:recipeId" element={<RecipeDetail />} />
-        <Route path="/favorites" element={<Favorites />} />
-        <Route path="/search" element={<SearchResults />} />
-        {/* Altre route da aggiungere in seguito */}
-      </Routes>
+      <main className="app-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/category/:categoryName" element={<Category />} />
+          <Route path="/recipe/:recipeId" element={<RecipeDetail />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/search" element={<SearchResults />} />
+          {/* Altre route da aggiungere in seguito */}
+        </Routes>
+      </main>
     </>
   );
 }

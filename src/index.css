@@ -22,12 +22,49 @@ a:hover {
   color: #535bf2;
 }
 
+
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background: #f7f7f7;
+  color: #222;
+}
+
+main, .app-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+@media (max-width: 900px) {
+  main, .app-content {
+    max-width: 100%;
+    padding: 1.5rem 0.5rem;
+  }
+  .categories-list, .meals-grid {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .categories-list, .meals-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .category-card, .meal-card {
+    width: 95vw;
+    max-width: 350px;
+  }
+  .detail-img {
+    width: 95vw;
+    max-width: 350px;
+  }
+  .navbar-list {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
 }
 
 h1 {
