@@ -8,7 +8,9 @@ interface FavoritesContextType {
   isFavorite: (id: string) => boolean;
 }
 
-const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);
+const FavoritesContext = createContext<FavoritesContextType | undefined>(
+  undefined
+);
 
 export function FavoritesProvider({ children }: { children: React.ReactNode }) {
   const [favorites, setFavorites] = useLocalStorage<string[]>("favorites", []);
@@ -22,7 +24,9 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
   const isFavorite = (id: string) => favorites.includes(id);
 
   return (
-    <FavoritesContext.Provider value={{ favorites, addFavorite, removeFavorite, isFavorite }}>
+    <FavoritesContext.Provider
+      value={{ favorites, addFavorite, removeFavorite, isFavorite }}
+    >
       {children}
     </FavoritesContext.Provider>
   );
@@ -30,6 +34,7 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
 
 export function useFavorites() {
   const ctx = useContext(FavoritesContext);
-  if (!ctx) throw new Error("useFavorites deve essere usato dentro FavoritesProvider");
+  if (!ctx)
+    throw new Error("useFavorites deve essere usato dentro FavoritesProvider");
   return ctx;
 }
