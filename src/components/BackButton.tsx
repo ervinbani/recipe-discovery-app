@@ -16,11 +16,11 @@ export function BackButton() {
         fontSize: "1rem",
         display: "flex",
         alignItems: "center",
-        gap: "0.5rem"
+        gap: "0.5rem",
       }}
       aria-label="Torna indietro"
     >
-      <span style={{fontSize: "1.2em"}}>←</span> Back
+      <span style={{ fontSize: "1.2em" }}>←</span> Back
     </button>
   );
 }
