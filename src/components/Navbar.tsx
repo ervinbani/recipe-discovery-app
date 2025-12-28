@@ -32,10 +32,12 @@ export default function Navbar() {
               type="text"
               placeholder="Cerca ricetta..."
               value={search}
-              onChange={e => setSearch(e.target.value)}
+              onChange={(e) => setSearch(e.target.value)}
               className="navbar-search-input"
             />
-            <button type="submit" className="navbar-search-btn">Cerca</button>
+            <button type="submit" className="navbar-search-btn">
+              Cerca
+            </button>
           </form>
         </li>
       </ul>
