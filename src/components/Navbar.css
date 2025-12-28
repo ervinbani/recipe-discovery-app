@@ -22,3 +22,30 @@
 .navbar-list li a:hover {
   color: #ff9800;
 }
+
+.navbar-search-form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-search-input {
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.navbar-search-btn {
+  background: #ff9800;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.3rem 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.navbar-search-btn:hover {
+  background: #e67c00;
+}

@@ -25,10 +25,11 @@ export default function Favorites() {
       favs.map((id: string) =>
         fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
           .then((res) => {
-            if (!res.ok) throw new Error("Errore nel fetch delle ricette preferite");
+            if (!res.ok)
+              throw new Error("Errore nel fetch delle ricette preferite");
             return res.json();
           })
-          .then((data) => data.meals ? data.meals[0] : null)
+          .then((data) => (data.meals ? data.meals[0] : null))
       )
     )
       .then((results) => {
