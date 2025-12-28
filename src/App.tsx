@@ -1,5 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Category from "./pages/Category";
 import "./App.css";
 
 function App() {
@@ -7,7 +9,8 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<div>Home Page</div>} />
+        <Route path="/" element={<Home />} />
+        <Route path="/category/:categoryName" element={<Category />} />
         <Route path="/favorites" element={<div>Favorites Page</div>} />
         <Route path="/search" element={<div>Search Page</div>} />
         {/* Altre route da aggiungere in seguito */}

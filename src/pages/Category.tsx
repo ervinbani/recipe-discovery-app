@@ -1,0 +1,52 @@
+
+import "../styles/meals.css";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
+interface Meal {
+  idMeal: string;
+  strMeal: string;
+  strMealThumb: string;
+}
+
+export default function Category() {
+  const { categoryName } = useParams<{ categoryName: string }>();
+  const [meals, setMeals] = useState<Meal[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!categoryName) return;
+    setLoading(true);
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${categoryName}`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Errore nel fetch delle ricette");
+        return res.json();
+      })
+      .then((data) => {
+        setMeals(data.meals || []);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, [categoryName]);
+
+  if (loading) return <div>Caricamento ricette...</div>;
+  if (error) return <div>Errore: {error}</div>;
+
+  return (
+    <div className="meals-list">
+      <h2>Ricette per categoria: {categoryName}</h2>
+      <div className="meals-grid">
+        {meals.map((meal) => (
+          <div key={meal.idMeal} className="meal-card">
+            <img src={meal.strMealThumb} alt={meal.strMeal} />
+            <h4>{meal.strMeal}</h4>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
