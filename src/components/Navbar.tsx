@@ -1,10 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+
+import { useTheme } from "../context/ThemeContext";
 import "./Navbar.css";
+
 
 export default function Navbar() {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
+  const { theme, toggleTheme } = useTheme();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,6 +20,16 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
+      <button
+        className="theme-toggle-btn"
+        onClick={toggleTheme}
+        aria-label="Cambia tema"
+        style={{ position: "absolute", top: 12, right: 24, background: "none", border: "none", cursor: "pointer", fontSize: 28 }}
+      >
+        <span role="img" aria-label="mezza luna">
+          {theme === "dark" ? "🌙" : "🌗"}
+        </span>
+      </button>
       <ul className="navbar-list">
         <li>
           <Link to="/">Home</Link>
