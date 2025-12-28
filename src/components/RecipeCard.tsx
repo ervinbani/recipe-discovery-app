@@ -9,7 +9,11 @@ interface RecipeCardProps {
 
 const RecipeCard: FC<RecipeCardProps> = ({ id, name, image, onClick }) => {
   return (
-    <div className="meal-card" onClick={onClick} style={{ cursor: onClick ? 'pointer' : 'default' }}>
+    <div
+      className="meal-card"
+      onClick={onClick}
+      style={{ cursor: onClick ? "pointer" : "default" }}
+    >
       <img src={image} alt={name} />
       <h4>{name}</h4>
     </div>
