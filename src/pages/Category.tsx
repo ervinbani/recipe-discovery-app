@@ -2,13 +2,18 @@ import "../styles/meals.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import RecipeCard from "../components/RecipeCard";
+
 import { useNavigate } from "react-router-dom";
+
 
 interface Meal {
   idMeal: string;
   strMeal: string;
   strMealThumb: string;
 }
+
+export default function Category() {
+
 
   const { categoryName } = useParams<{ categoryName: string }>();
   const [meals, setMeals] = useState<Meal[]>([]);
