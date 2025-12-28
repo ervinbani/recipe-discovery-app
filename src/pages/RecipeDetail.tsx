@@ -54,17 +54,31 @@ export default function RecipeDetail() {
   return (
     <div className="recipe-detail">
       <h2>{recipe.strMeal}</h2>
-      <img src={recipe.strMealThumb} alt={recipe.strMeal} className="detail-img" />
-      <p><strong>Cucina:</strong> {recipe.strArea}</p>
-      <p><strong>Categoria:</strong> {recipe.strCategory}</p>
+      <img
+        src={recipe.strMealThumb}
+        alt={recipe.strMeal}
+        className="detail-img"
+      />
+      <p>
+        <strong>Cucina:</strong> {recipe.strArea}
+      </p>
+      <p>
+        <strong>Categoria:</strong> {recipe.strCategory}
+      </p>
       <h3>Ingredienti</h3>
       <ul>
-        {ingredients.map((item, idx) => <li key={idx}>{item}</li>)}
+        {ingredients.map((item, idx) => (
+          <li key={idx}>{item}</li>
+        ))}
       </ul>
       <h3>Istruzioni</h3>
       <p>{recipe.strInstructions}</p>
       {recipe.strYoutube && (
-        <p><a href={recipe.strYoutube} target="_blank" rel="noopener noreferrer">Video Ricetta</a></p>
+        <p>
+          <a href={recipe.strYoutube} target="_blank" rel="noopener noreferrer">
+            Video Ricetta
+          </a>
+        </p>
       )}
     </div>
   );
