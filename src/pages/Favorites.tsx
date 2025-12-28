@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import RecipeCard from "../components/RecipeCard";
 import { useNavigate } from "react-router-dom";
+import { Spinner, ErrorMessage } from "../components/Feedback";
+import "../styles/spinner.css";
 
 interface Meal {
   idMeal: string;
@@ -42,8 +44,8 @@ export default function Favorites() {
       });
   }, []);
 
-  if (loading) return <div>Caricamento preferiti...</div>;
-  if (error) return <div>Errore: {error}</div>;
+  if (loading) return <Spinner />;
+  if (error) return <ErrorMessage message={error} />;
 
   return (
     <div className="meals-list">

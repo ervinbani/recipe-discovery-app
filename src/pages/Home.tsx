@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import RecipeCategoryCard from "../components/RecipeCategoryCard";
+import { Spinner, ErrorMessage } from "../components/Feedback";
+import "../styles/spinner.css";
 
 interface Category {
   idCategory: string;
@@ -31,8 +33,8 @@ export default function Home() {
       });
   }, []);
 
-  if (loading) return <div>Caricamento categorie...</div>;
-  if (error) return <div>Errore: {error}</div>;
+  if (loading) return <Spinner />;
+  if (error) return <ErrorMessage message={error} />;
 
   return (
     <div className="categories-list">

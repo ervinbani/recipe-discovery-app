@@ -2,9 +2,10 @@ import "../styles/meals.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import RecipeCard from "../components/RecipeCard";
+import { Spinner, ErrorMessage } from "../components/Feedback";
+import "../styles/spinner.css";
 
 import { useNavigate } from "react-router-dom";
-
 
 interface Meal {
   idMeal: string;
@@ -13,8 +14,6 @@ interface Meal {
 }
 
 export default function Category() {
-
-
   const { categoryName } = useParams<{ categoryName: string }>();
   const [meals, setMeals] = useState<Meal[]>([]);
   const [loading, setLoading] = useState(true);
@@ -42,7 +41,7 @@ export default function Category() {
   }, [categoryName]);
 
   if (loading) return <div>Caricamento ricette...</div>;
-  if (error) return <div>Errore: {error}</div>;
+    if (error) return <ErrorMessage message={error} />;
 
   return (
     <div className="meals-list">

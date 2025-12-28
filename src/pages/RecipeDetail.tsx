@@ -1,6 +1,8 @@
 import "../styles/recipe-detail.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Spinner, ErrorMessage } from "../components/Feedback";
+import "../styles/spinner.css";
 
 interface RecipeDetail {
   idMeal: string;
@@ -57,9 +59,9 @@ export default function RecipeDetail() {
       });
   }, [recipeId]);
 
-  if (loading) return <div>Caricamento dettagli ricetta...</div>;
-  if (error) return <div>Errore: {error}</div>;
-  if (!recipe) return <div>Ricetta non trovata.</div>;
+  if (loading) return <Spinner />;
+  if (error) return <ErrorMessage message={error} />;
+  if (!recipe) return <ErrorMessage message="Ricetta non trovata." />;
 
   // Ingredienti e misure
   const ingredients = [];

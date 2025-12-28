@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import RecipeCard from "../components/RecipeCard";
+import { Spinner, ErrorMessage } from "../components/Feedback";
+import "../styles/spinner.css";
 
 interface Meal {
   idMeal: string;
@@ -41,8 +43,8 @@ export default function SearchResults() {
       });
   }, [query]);
 
-  if (loading) return <div>Caricamento risultati...</div>;
-  if (error) return <div>Errore: {error}</div>;
+  if (loading) return <Spinner />;
+  if (error) return <ErrorMessage message={error} />;
 
   return (
     <div className="meals-list">
