@@ -17,7 +17,7 @@
 .meal-card {
   background: #fff;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   width: 200px;
   padding: 1rem;
   text-align: center;
@@ -26,7 +26,7 @@
 
 .meal-card:hover {
   transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
 .meal-card img {

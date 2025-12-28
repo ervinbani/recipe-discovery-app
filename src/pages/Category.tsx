@@ -1,4 +1,3 @@
-
 import "../styles/meals.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -18,7 +17,9 @@ export default function Category() {
   useEffect(() => {
     if (!categoryName) return;
     setLoading(true);
-    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${categoryName}`)
+    fetch(
+      `https://www.themealdb.com/api/json/v1/1/filter.php?c=${categoryName}`
+    )
       .then((res) => {
         if (!res.ok) throw new Error("Errore nel fetch delle ricette");
         return res.json();

@@ -8,9 +8,19 @@ interface RecipeCategoryCardProps {
   onClick?: () => void;
 }
 
-const RecipeCategoryCard: FC<RecipeCategoryCardProps> = ({ id, name, image, description, onClick }) => {
+const RecipeCategoryCard: FC<RecipeCategoryCardProps> = ({
+  id,
+  name,
+  image,
+  description,
+  onClick,
+}) => {
   return (
-    <div className="category-card" onClick={onClick} style={{ cursor: onClick ? 'pointer' : 'default' }}>
+    <div
+      className="category-card"
+      onClick={onClick}
+      style={{ cursor: onClick ? "pointer" : "default" }}
+    >
       <img src={image} alt={name} />
       <h3>{name}</h3>
       <p>{description.slice(0, 100)}...</p>
