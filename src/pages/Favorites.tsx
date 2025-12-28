@@ -1,3 +1,4 @@
+import { BackButton } from "../components/BackButton";
 import { useEffect, useState } from "react";
 import RecipeCard from "../components/RecipeCard";
 import { useNavigate } from "react-router-dom";
@@ -49,6 +50,7 @@ export default function Favorites() {
 
   return (
     <div className="meals-list">
+      <BackButton />
       <h2>Le tue ricette preferite</h2>
       <div className="meals-grid">
         {meals.length === 0 ? (

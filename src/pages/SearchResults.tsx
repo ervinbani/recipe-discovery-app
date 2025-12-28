@@ -1,3 +1,4 @@
+import { BackButton } from "../components/BackButton";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import RecipeCard from "../components/RecipeCard";
@@ -48,6 +49,7 @@ export default function SearchResults() {
 
   return (
     <div className="meals-list">
+      <BackButton />
       <h2>Risultati per: "{query}"</h2>
       <div className="meals-grid">
         {meals.length === 0 ? (

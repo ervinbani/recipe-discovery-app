@@ -1,3 +1,4 @@
+import { BackButton } from "../components/BackButton";
 import "../styles/meals.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -45,6 +46,7 @@ export default function Category() {
 
   return (
     <div className="meals-list">
+      <BackButton />
       <h2>Ricette per categoria: {categoryName}</h2>
       <div className="meals-grid">
         {meals.map((meal) => (
