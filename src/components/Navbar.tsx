@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useTheme } from "../context/ThemeContext";
 import "./Navbar.css";
 
-
 export default function Navbar() {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
@@ -24,7 +23,15 @@ export default function Navbar() {
         className="theme-toggle-btn"
         onClick={toggleTheme}
         aria-label="Cambia tema"
-        style={{ position: "absolute", top: 12, right: 24, background: "none", border: "none", cursor: "pointer", fontSize: 28 }}
+        style={{
+          position: "absolute",
+          top: 12,
+          right: 24,
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+          fontSize: 28,
+        }}
       >
         <span role="img" aria-label="mezza luna">
           {theme === "dark" ? "🌙" : "🌗"}
