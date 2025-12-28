@@ -1,6 +1,7 @@
 import "../styles/meals.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import RecipeCard from "../components/RecipeCard";
 
 interface Meal {
   idMeal: string;
@@ -42,10 +43,12 @@ export default function Category() {
       <h2>Ricette per categoria: {categoryName}</h2>
       <div className="meals-grid">
         {meals.map((meal) => (
-          <div key={meal.idMeal} className="meal-card">
-            <img src={meal.strMealThumb} alt={meal.strMeal} />
-            <h4>{meal.strMeal}</h4>
-          </div>
+          <RecipeCard
+            key={meal.idMeal}
+            id={meal.idMeal}
+            name={meal.strMeal}
+            image={meal.strMealThumb}
+          />
         ))}
       </div>
     </div>
