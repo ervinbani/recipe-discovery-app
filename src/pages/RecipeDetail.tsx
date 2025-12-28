@@ -18,6 +18,26 @@ export default function RecipeDetail() {
   const [recipe, setRecipe] = useState<RecipeDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  // Placeholder gestione preferiti locale (verrà sostituito con context/hook)
+  useEffect(() => {
+    if (!recipeId) return;
+    const favs = JSON.parse(localStorage.getItem('favorites') || '[]');
+    setIsFavorite(favs.includes(recipeId));
+  }, [recipeId]);
+
+  const handleFavorite = () => {
+    const favs = JSON.parse(localStorage.getItem('favorites') || '[]');
+    let newFavs;
+    if (isFavorite) {
+      newFavs = favs.filter((id: string) => id !== recipeId);
+    } else {
+      newFavs = [...favs, recipeId];
+    }
+    localStorage.setItem('favorites', JSON.stringify(newFavs));
+    setIsFavorite(!isFavorite);
+  };
 
   useEffect(() => {
     if (!recipeId) return;
@@ -54,6 +74,21 @@ export default function RecipeDetail() {
   return (
     <div className="recipe-detail">
       <h2>{recipe.strMeal}</h2>
+      <button
+        onClick={handleFavorite}
+        style={{
+          background: isFavorite ? '#ff9800' : '#eee',
+          color: isFavorite ? '#fff' : '#222',
+          border: 'none',
+          borderRadius: '6px',
+          padding: '0.5rem 1.2rem',
+          fontWeight: 600,
+          marginBottom: '1rem',
+          cursor: 'pointer',
+        }}
+      >
+        {isFavorite ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'}
+      </button>
       <img
         src={recipe.strMealThumb}
         alt={recipe.strMeal}
