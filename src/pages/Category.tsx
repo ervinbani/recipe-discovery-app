@@ -2,6 +2,7 @@ import "../styles/meals.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import RecipeCard from "../components/RecipeCard";
+import { useNavigate } from "react-router-dom";
 
 interface Meal {
   idMeal: string;
@@ -9,11 +10,11 @@ interface Meal {
   strMealThumb: string;
 }
 
-export default function Category() {
   const { categoryName } = useParams<{ categoryName: string }>();
   const [meals, setMeals] = useState<Meal[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!categoryName) return;
@@ -48,6 +49,7 @@ export default function Category() {
             id={meal.idMeal}
             name={meal.strMeal}
             image={meal.strMealThumb}
+            onClick={() => navigate(`/recipe/${meal.idMeal}`)}
           />
         ))}
       </div>
