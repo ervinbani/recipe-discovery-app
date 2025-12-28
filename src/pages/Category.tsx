@@ -41,7 +41,7 @@ export default function Category() {
   }, [categoryName]);
 
   if (loading) return <div>Caricamento ricette...</div>;
-    if (error) return <ErrorMessage message={error} />;
+  if (error) return <ErrorMessage message={error} />;
 
   return (
     <div className="meals-list">
