@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Category from "./pages/Category";
 import RecipeDetail from "./pages/RecipeDetail";
 import Favorites from "./pages/Favorites";
+import SearchResults from "./pages/SearchResults";
 import "./App.css";
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
         <Route path="/category/:categoryName" element={<Category />} />
         <Route path="/recipe/:recipeId" element={<RecipeDetail />} />
         <Route path="/favorites" element={<Favorites />} />
-        <Route path="/search" element={<div>Search Page</div>} />
+        <Route path="/search" element={<SearchResults />} />
         {/* Altre route da aggiungere in seguito */}
       </Routes>
     </>
