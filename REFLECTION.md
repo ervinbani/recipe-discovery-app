@@ -1,38 +1,46 @@
-# Riflessioni e Decisioni di Design – Recipe Discovery App
+# Reflections and Design Decisions – Recipe Discovery App
 
-## Scelte Tecnologiche
+## Technology Choices
 
-- **Vite + React + TypeScript**: scelti per velocità di sviluppo, tipizzazione e supporto moderno.
-- **React Router DOM**: per una navigazione SPA semplice e scalabile.
-- **TheMealDB API**: scelta per la ricchezza di dati e la facilità di utilizzo.
+- **Vite + React + TypeScript**: Chosen for fast development, type safety, and modern tooling support.
+- **React Router DOM**: For simple and scalable SPA navigation.
+- **TheMealDB API**: Selected for its rich data and ease of use.
 
-## Architettura e Struttura
+## Architecture and Structure
 
-- **Componenti riutilizzabili**: Card, Navbar, Spinner, Feedback, per DRY e manutenzione.
-- **Custom hooks**: `useFetch` per gestire fetch asincroni e `useLocalStorage` per sincronizzare lo stato dei preferiti.
-- **Context API**: per la gestione globale dei preferiti, evitando prop drilling.
-- **CSS responsive**: media query e layout flessibile per una UX gradevole su mobile e desktop.
+- **Reusable Components**: Card, Navbar, Spinner, Feedback, to keep code DRY and maintainable.
+- **Custom Hooks**: `useFetch` for handling async fetches and `useLocalStorage` for syncing favorites state.
+- **Context API**: For global favorites management, avoiding prop drilling.
+- **Responsive CSS**: Media queries and flexible layouts for a pleasant UX on both mobile and desktop.
 
 ## UX/UI
 
-- **Navbar sempre visibile** con ricerca integrata.
-- **Feedback utente**: spinner e messaggi di errore uniformi.
-- **Card cliccabili** per navigazione intuitiva.
-- **Pulsante preferiti**: feedback immediato e sincronizzazione locale.
+- **Always-visible Navbar** with integrated search.
+- **User Feedback**: Consistent spinner and error messages.
+- **Clickable Cards** for intuitive navigation.
+- **Favorites Button**: Instant feedback and local sync.
 
-## Difficoltà e Soluzioni
+## Challenges and Solutions
 
-- Gestione asincrona fetch multipli (preferiti): risolta con `Promise.all`.
-- Sincronizzazione preferiti tra pagine: risolta con Context e custom hook.
-- Responsive design: testato su diverse larghezze, aggiunte media query mirate.
+- Handling async multiple fetches (favorites): Solved with `Promise.all`.
+- Syncing favorites across pages: Solved with Context and custom hook.
+- Responsive design: Tested on various widths, added targeted media queries.
 
-## Possibili Migliorie Future
+### Most challenging part
 
-- Autenticazione utente e preferiti cloud.
-- Test automatici (unitari e E2E).
-- Animazioni e transizioni più avanzate.
-- Miglioramento accessibilità (a11y).
+The most challenging part was keeping the favorites data consistent across different views while handling asynchronous network calls. A concrete issue occurred when the app hydrated favorites from `localStorage` and then fetched full meal details for each saved id: components could mount before all details were available, producing transient UI states and occasional mismatches. The solution was to centralize favorites in a `FavoritesContext`, persist state with a `useLocalStorage` hook, and, when necessary, load multiple recipe details with `Promise.all` so the context can provide a single, consistent data shape to consuming components. I also added simple loading states and guarded component updates to avoid race conditions while hydration completes.
 
-## Conclusioni
+### Design decision
 
-Il progetto è stato pensato per essere didattico, scalabile e facilmente estendibile. Ogni scelta è stata motivata dalla chiarezza, semplicità e best practice per uno sviluppatore junior.
+I created a compact `useFetch` hook that returns `{ data, loading, error }` rather than mixing data fetching logic across components. This keeps components focused on rendering and reduces duplicated code for handling loading and error states. It also makes it easier to add retries, caching, or request cancellation later. Centralizing fetch behavior simplified testing and debugging network-related problems during development.
+
+## Possible Future Improvements
+
+- User authentication and cloud-synced favorites.
+- Automated testing (unit and E2E).
+- More advanced animations and transitions.
+- Improved accessibility (a11y).
+
+## Conclusions
+
+The project was designed to be educational, scalable, and easily extendable. Every decision was made for clarity, simplicity, and best practices.

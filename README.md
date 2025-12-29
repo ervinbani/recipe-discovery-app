@@ -1,94 +1,87 @@
 # Recipe Discovery App
 
-Un'applicazione React per scoprire, cercare e salvare ricette dal mondo, sviluppata con Vite, TypeScript e React Router.
+Discover, search, and save recipes from around the world. This single-page application is built with React, TypeScript, and Vite, and uses TheMealDB as the data source.
 
-## Funzionalità
+## Demo (what to expect)
 
-- Esplora categorie di ricette
-- Visualizza ricette per categoria
-- Dettagli completi di ogni ricetta (ingredienti, istruzioni, video)
-- Aggiungi/rimuovi ricette dai preferiti
-- Ricerca ricette per nome
-- Gestione preferiti globale (context + localStorage)
-- UI responsive e moderna
+- Landing shows recipe categories.
+- Click a category to browse recipes.
+- Click a recipe to view ingredients, instructions, and an optional video.
+- Use the search bar in the navbar to find recipes by name.
+- Toggle light/dark theme and save favorites (persisted via localStorage).
 
-## Struttura del progetto
+## Features
+
+- Browse recipe categories
+- View recipes by category and see recipe details
+- Search recipes by name
+- Add/remove recipes to Favorites (global state + localStorage)
+- Light / Dark theme toggle
+- Back button for easy navigation
+- Responsive UI for mobile and desktop
+
+## Project Structure
 
 ```
 src/
-  components/      // Componenti riutilizzabili (Navbar, Card, Spinner...)
-  context/         // Context API (Favorites)
+  components/      // Reusable components (Navbar, RecipeCard, RecipeCategoryCard, BackButton, Feedback...)
+  context/         // Context providers (Favorites, Theme)
   hooks/           // Custom hooks (useFetch, useLocalStorage)
-  pages/           // Pagine principali (Home, Category, RecipeDetail, ...)
-  styles/          // File CSS
+  pages/           // Pages (Home, Category, RecipeDetail, Favorites, SearchResults)
+  styles/          // CSS and theme styles
+  assets/          // Images/icons
 ```
 
-## Avvio locale
+## Getting Started
 
-1. Clona la repo:
-   ```
-   git clone https://github.com/ervinbani/recipe-discovery-app.git
-   cd recipe-discovery-app
-   ```
-2. Installa le dipendenze:
-   ```
-   npm install
-   ```
-3. Avvia il server di sviluppo:
-   ```
-   npm run dev
-   ```
-4. Apri [http://localhost:5173](http://localhost:5173) nel browser.
+1. Clone the repository:
 
-## Dipendenze principali
+```bash
+git clone https://github.com/ervinbani/recipe-discovery-app.git
+cd recipe-discovery-app
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Start the development server:
+
+```bash
+npm run dev
+```
+
+4. Open the app in the browser:
+
+[http://localhost:5173](http://localhost:5173)
+
+## Available Scripts
+
+- `npm run dev` — Start development server
+- `npm run build` — Build production bundle
+- `npm run preview` — Serve the production build locally
+
+## Main Dependencies
 
 - React
 - React Router DOM
 - TypeScript
 - Vite
 
-## API utilizzata
+## API
 
-- [TheMealDB](https://www.themealdb.com/api.php)
+This project uses TheMealDB for recipe data: https://www.themealdb.com/api.php
 
-## Autore
+## Author
 
-Ervin Bani
+Ervin Bani — https://github.com/ervinbani
+
+## Notes & Future Improvements
+
+- Add user authentication and cloud-synced favorites
+- Add automated tests (unit & E2E)
+- Add screenshots or a short demo GIF to the README
 
 ---
-
-Per domande o suggerimenti, apri una issue su GitHub!
-},
-},
-])
-
-````
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-````

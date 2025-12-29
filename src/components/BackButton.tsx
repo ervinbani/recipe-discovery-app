@@ -4,6 +4,7 @@ export function BackButton() {
   const navigate = useNavigate();
   return (
     <button
+      type="button"
       onClick={() => navigate(-1)}
       style={{
         marginBottom: "1.5rem",
@@ -18,9 +19,12 @@ export function BackButton() {
         alignItems: "center",
         gap: "0.5rem",
       }}
-      aria-label="Torna indietro"
+      aria-label="Go back"
     >
-      <span style={{ fontSize: "1.2em" }}>←</span> Back
+      <span style={{ fontSize: "1.2em" }} aria-hidden>
+        ←
+      </span>
+      <span>Back</span>
     </button>
   );
 }

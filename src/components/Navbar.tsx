@@ -22,7 +22,9 @@ export default function Navbar() {
       <button
         className="theme-toggle-btn"
         onClick={toggleTheme}
-        aria-label="Cambia tema"
+        aria-label="Toggle theme"
+        title="Toggle theme"
+        type="button"
         style={{
           position: "absolute",
           top: 12,
@@ -51,13 +53,14 @@ export default function Navbar() {
           <form onSubmit={handleSubmit} className="navbar-search-form">
             <input
               type="text"
-              placeholder="Cerca ricetta..."
+              placeholder="Search recipes..."
+              aria-label="Search recipes"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="navbar-search-input"
             />
-            <button type="submit" className="navbar-search-btn">
-              Cerca
+            <button type="submit" className="navbar-search-btn" aria-label="Search">
+              Search
             </button>
           </form>
         </li>

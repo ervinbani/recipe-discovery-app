@@ -9,17 +9,33 @@
 .category-card {
   background: #fff;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  /* stronger default shadow for better visibility */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   width: 260px;
   padding: 1rem;
   text-align: center;
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .category-card:hover {
-  transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
 }
+
+/* Dark theme: use lighter, more visible elevated shadow */
+body[data-theme="dark"] .category-card {
+  background: #2b2b2b;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6),
+    0 1px 0 rgba(255, 255, 255, 0.02) inset;
+}
+
+body[data-theme="dark"] .category-card:hover {
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65),
+    0 1px 0 rgba(255, 255, 255, 0.02) inset;
+}
+
+/* Add Bootstrap-like utility shadow for alternate class name */
+/* Note: use `.category-card` only — removed incorrect `.ccategory-card` class */
 
 .category-card img {
   width: 100px;
@@ -27,6 +43,15 @@
   object-fit: cover;
   border-radius: 50%;
   margin-bottom: 1rem;
+}
+
+/* Visible focus for keyboard users */
+.category-card:focus {
+  outline: 3px solid #646cff;
+  outline-offset: 4px;
+}
+.category-card:focus:not(:focus-visible) {
+  outline: none;
 }
 
 .category-card h3 {
