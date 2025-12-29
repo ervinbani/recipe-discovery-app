@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 import { Spinner, ErrorMessage } from "../components/Feedback";
 import "../styles/spinner.css";
 
-
 interface RecipeDetail {
   idMeal: string;
   strMeal: string;
@@ -44,19 +43,19 @@ export default function RecipeDetail() {
 
   useEffect(() => {
     if (!recipeId) return;
-    const favs = JSON.parse(localStorage.getItem('favorites') || '[]');
+    const favs = JSON.parse(localStorage.getItem("favorites") || "[]");
     setIsFavorite(favs.includes(recipeId));
   }, [recipeId]);
 
   const handleFavorite = () => {
-    const favs = JSON.parse(localStorage.getItem('favorites') || '[]');
+    const favs = JSON.parse(localStorage.getItem("favorites") || "[]");
     let newFavs;
     if (isFavorite) {
       newFavs = favs.filter((id: string) => id !== recipeId);
     } else {
       newFavs = [...favs, recipeId];
     }
-    localStorage.setItem('favorites', JSON.stringify(newFavs));
+    localStorage.setItem("favorites", JSON.stringify(newFavs));
     setIsFavorite(!isFavorite);
   };
 
@@ -119,8 +118,6 @@ export default function RecipeDetail() {
           </a>
         </p>
       )}
-
     </div>
   );
 }
-
