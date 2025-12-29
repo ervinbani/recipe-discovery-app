@@ -34,7 +34,6 @@ body[data-theme="dark"] .category-card:hover {
     0 1px 0 rgba(255, 255, 255, 0.02) inset;
 }
 
-/* Add Bootstrap-like utility shadow for alternate class name */
 /* Note: use `.category-card` only — removed incorrect `.ccategory-card` class */
 
 .category-card img {
