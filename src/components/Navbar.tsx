@@ -59,7 +59,11 @@ export default function Navbar() {
               onChange={(e) => setSearch(e.target.value)}
               className="navbar-search-input"
             />
-            <button type="submit" className="navbar-search-btn" aria-label="Search">
+            <button
+              type="submit"
+              className="navbar-search-btn"
+              aria-label="Search"
+            >
               Search
             </button>
           </form>
